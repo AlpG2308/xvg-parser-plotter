@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-path = ""
+path = "../Proteins/temperature.xvg"
 
 def xvg_parser (path):
     x,y = [],[]
@@ -23,10 +23,16 @@ def xvg_parser (path):
     return (x,y,x_label,y_label)
 
 def plot_xvg (xvg):
+    mean = sum(xvg[1])/len(xvg[1]) #for equilibration
     plt.plot(xvg[0], xvg[1])
+    #for equilibration
+    plt.axhline(sum(xvg[1])/len(xvg[1]),color = "red",label = f"Mean = {mean: .2f} {xvg[3]}") #round to double precision
     plt.xlabel(xvg[2])
     plt.ylabel(xvg[3])
-    plt.show();
+    plt.title("Equilibration - NVT Ensemble\nTemperature")
+    plt.legend()
+    #plt.show()
+    plt.savefig("./EquilibrationNVTTemperature_6cvmH2O",format="png")
 
 if __name__ == "__main__":
     plot_xvg(xvg_parser(path))
