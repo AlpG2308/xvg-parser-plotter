@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-path = "../Proteins/temperature.xvg"
+path = ""
 
 def xvg_parser (path):
     x,y = [],[]
