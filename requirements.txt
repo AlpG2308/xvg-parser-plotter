@@ -1,0 +1,14 @@
+numpy
+scipy
+matplotlib
+ipywidgets
+jupyter_contrib_nbextensions
+nglview
+mdtraj
+MDanalysis
+jupyter
+pyqt5
+wheel
+Pmw
+pyqt5
+plotext

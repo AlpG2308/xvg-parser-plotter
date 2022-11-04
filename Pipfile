@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+nglview = "*"
+numpy = "*"
+scipy = "*"
+matplotlib = "*"
+ipywidgets = "*"
+jupyter-contrib-nbextensions = "*"
+mdtraj = "*"
+mdanalysis = "*"
+jupyter = "*"
+pyqt5 = "*"
+pmw = "*"
+plotext = "*"
+
+[requires]
+python_version = "3.8"
+
+[dev-packages]
