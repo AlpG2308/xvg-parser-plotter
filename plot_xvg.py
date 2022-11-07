@@ -1,7 +1,15 @@
 import matplotlib.pyplot as plt
-
+from dataclasses import dataclass
+@dataclass
+class Xvg_data:
+    path: str
+    data_x: list
+    data_y: list
+    x_label: str
+    y_label: str
+rmsd_xtal = "../Proteins/rmsd_xtal.xvg"
+rmsd = "../Proteins/rmsd.xvg"
 path = "../Proteins/temperature.xvg"
-
 def xvg_parser (path):
     x,y = [],[]
     x_label = ""
@@ -19,21 +27,25 @@ def xvg_parser (path):
                 data = line.split()
                 x.append(float(data[0]))
                 y.append(float(data[1]))
-
-    return (x,y,x_label,y_label)
-
+    xvg = Xvg_data(path,x,y,x_label,y_label)
+    #return (x,y,x_label,y_label)
+    return xvg
+#print (Xvg_data.data_y)
 def plot_xvg (xvg):
-    mean = sum(xvg[1])/len(xvg[1]) #for equilibration
-    plt.plot(xvg[0], xvg[1])
+    mean = sum(xvg.data_x)/len(xvg.data_x) #for equilibration
+    plt.plot(xvg.data_x, xvg.data_y)
     #for equilibration
-    plt.axhline(sum(xvg[1])/len(xvg[1]),color = "red",label = f"Mean = {mean: .2f} {xvg[3]}") #round to double precision
-    plt.xlabel(xvg[2])
-    plt.ylabel(xvg[3])
+    plt.axhline(mean,color = "red",label = f"Mean = {mean: .2f} {xvg.y_label}") #round to double precision
+    plt.xlabel(xvg.x_label)
+    plt.ylabel(xvg.y_label)
     plt.title("Equilibration - NVT Ensemble\nTemperature")
     plt.legend()
-    #plt.show()
-    plt.savefig("./EquilibrationNVTTemperature_6cvmH2O",format="png")
+    plt.show()
+    #plt.savefig("./EquilibrationNVTTemperature_6cvmH2O.png",format="png")
 
 if __name__ == "__main__":
+    #plot_xvg(xvg_parser(rmsd_xtal))
     plot_xvg(xvg_parser(path))
+    #a = xvg_parser(path)
+    #print (a)
 
