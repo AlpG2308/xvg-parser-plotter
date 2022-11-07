@@ -7,8 +7,6 @@ class Xvg_data:
     data_y: list
     x_label: str
     y_label: str
-rmsd_xtal = "../Proteins/rmsd_xtal.xvg"
-rmsd = "../Proteins/rmsd.xvg"
 path = "../Proteins/temperature.xvg"
 def xvg_parser (path):
     x,y = [],[]
@@ -28,9 +26,7 @@ def xvg_parser (path):
                 x.append(float(data[0]))
                 y.append(float(data[1]))
     xvg = Xvg_data(path,x,y,x_label,y_label)
-    #return (x,y,x_label,y_label)
     return xvg
-#print (Xvg_data.data_y)
 def plot_xvg (xvg):
     mean = sum(xvg.data_y)/len(xvg.data_y) #for equilibration
     plt.plot(xvg.data_x, xvg.data_y)
@@ -44,8 +40,5 @@ def plot_xvg (xvg):
     #plt.savefig("./EquilibrationNVTTemperature_6cvmH2O.png",format="png")
 
 if __name__ == "__main__":
-    #plot_xvg(xvg_parser(rmsd_xtal))
     plot_xvg(xvg_parser(path))
-    #a = xvg_parser(path)
-    #print (a)
 
