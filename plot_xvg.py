@@ -32,7 +32,7 @@ def xvg_parser (path):
     return xvg
 #print (Xvg_data.data_y)
 def plot_xvg (xvg):
-    mean = sum(xvg.data_x)/len(xvg.data_x) #for equilibration
+    mean = sum(xvg.data_y)/len(xvg.data_y) #for equilibration
     plt.plot(xvg.data_x, xvg.data_y)
     #for equilibration
     plt.axhline(mean,color = "red",label = f"Mean = {mean: .2f} {xvg.y_label}") #round to double precision
