@@ -7,7 +7,8 @@ class Xvg_data:
     data_y: list
     x_label: str
     y_label: str
-path = "../Proteins/temperature.xvg"
+path = "../Proteins/pressure.xvg"
+title = "Equilibration - NVT Ensemble\nTemperature"
 def xvg_parser (path):
     x,y = [],[]
     x_label = ""
@@ -34,7 +35,7 @@ def plot_xvg (xvg):
     plt.axhline(mean,color = "red",label = f"Mean = {mean: .2f} {xvg.y_label}") #round to double precision
     plt.xlabel(xvg.x_label)
     plt.ylabel(xvg.y_label)
-    plt.title("Equilibration - NVT Ensemble\nTemperature")
+    plt.title(title)
     plt.legend()
     plt.show()
     #plt.savefig("./EquilibrationNVTTemperature_6cvmH2O.png",format="png")
